@@ -1,0 +1,67 @@
+
+
+.announce {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100dvh;
+    height: 100vh;
+
+    background: rgb(48,84,210);
+    background: linear-gradient(148deg, rgba(48,84,210,1) 0%, rgba(205,19,54,1) 100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    // for framer motion
+    opacity: 0;
+
+    transition: 2s;
+    // animation-name: color_changer;
+    // animation-duration: 2s;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate;
+    // animation-fill-mode: backwards;
+}
+
+
+.announce__image {
+    width: 60vw;
+    max-width: 800px;
+    height: 32vh;
+    max-height: 640px;
+}
+
+
+.announce__titles {
+    margin-top: -2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.announce__title,
+.announce__title_2,
+.announce__text {
+    font-weight: 800;
+    margin-top: -1.5rem;
+
+    color: rgba(255, 255, 255, .8);
+}
+
+
+@keyframes color_changer {
+    from {
+        background: linear-gradient(148deg, rgba(48,84,210,1) 0%, rgba(205,19,54,1) 100%);
+    }
+    to {
+        background: linear-gradient(148deg, rgba(205,19,54,1) 0%, rgba(48,84,210,1) 100%);
+    }
+}
