@@ -1,11 +1,21 @@
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { Cylinder, useGLTF } from "@react-three/drei";
 
-export default function Helmet(props) {
+function HelmetObject(props) {
   const { nodes, materials } = useGLTF("/models/Helmet.glb");
 
+  const { position, scale } = props
+
+//   <group position={[ -5, 0, 5 ]} scale={[ .1, .1, .1 ]} {...props} dispose={null}>
+
+{/* <group position={[ -8, 0, -5 ]} scale={[ .01, .01, .01 ]} dispose={null}> */}
   return (
-    <group {...props} dispose={null}>
+    <group
+        position={[ 0, .5, 0 ]}
+        rotation-y={ -Math.PI + ( Math.PI / 4 ) }
+        scale={[ .01, .01, .01 ]}
+        dispose={null}
+    >
       <mesh
         castShadow
         receiveShadow
@@ -64,5 +74,17 @@ export default function Helmet(props) {
   );
 }
 
-useGLTF.preload("/models/Helmet.glb");
+export default function Helmet() {
 
+    return (
+        <group position={[ -7, -3, -7 ]}>
+
+            <Cylinder args={[ 2, 2, 1 ]}>
+                <HelmetObject />
+            </Cylinder>
+
+        </group>
+    )
+}
+
+useGLTF.preload("/models/Helmet.glb");

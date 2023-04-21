@@ -1,11 +1,27 @@
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import React, { useRef, useState } from "react";
+import { Cylinder, useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 
-export default function Trophy(props) {
+export function TrophyObject(props) {
   const { nodes, materials } = useGLTF("/models/Trophy.glb");
+  const [rotationY, setRotationY] = useState(0)
+
+
+
+  useFrame(()=> {
+    setRotationY(rotationY + .002)
+  })
+
   return (
-    <group {...props} dispose={null}>
+    <group
+        position={[ 0, 15, -70 ]}
+        scale={[ 80, 80, 80 ]}
+        rotation-y={rotationY}
+        dispose={null}
+        castShadow
+        receiveShadow
+    >
       <mesh
         castShadow
         receiveShadow
@@ -58,9 +74,21 @@ export default function Trophy(props) {
   );
 }
 
+
+export default function Trophy() {
+
+    return (
+        <group
+            position={[ 0, -2, -2 ]}
+        >
+
+            <Cylinder args={[ 1, 1, 2 ]}>
+                <TrophyObject />
+            </Cylinder>
+
+        </group>
+    )
+}
+
+
 useGLTF.preload("/models/Trophy.glb");
-
-
-rembrandt
-
-city
